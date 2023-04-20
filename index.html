@@ -99,8 +99,8 @@
 		filed with the San Francisco Rent Board, we train a machine
 		learning model to predict the likelihood of a filing on a given
 		block in the city. The dataset analyzed includes a wide range
-		of containing property characteristics, ownership informa-
-		tion, and tax payment history of land parcels aggregated
+		of containing property characteristics, ownership information, 
+		and tax payment history of land parcels aggregated
 		at the block level. We investigated the usefulness of spatial
 		features for this task and computed averages of our tax data
 		across neighborhoods as well as metrics representing each
@@ -108,45 +108,42 @@
 		can help us gain a better understanding of the relationship
 		between property characteristics and eviction likelihood for
 		further research and more effective policy. This in turn can
-		lead to more stable and affordable housing options for resi-
-		dents of San Francisco as well as potentially other cities.</p>
+		lead to more stable and affordable housing options for residents
+	        of San Francisco as well as potentially other cities.</p>
 	</section>
 	
 	<section class="results">
 		<h2>Project Results</h2>
-		<p>For our prediction task, we tested our model with four differ-
-		ent sets of features: tax features, neighbor-
-		hood features computed by averaging tax features from
-		each node’s neighborhood, graph features,
-		and a combination of all features. 
-		All models performed relatively similarly. Each had very
-		high accuracy, able to predict nearly 90% of the time which
-		blocks in the following year would have an eviction filing.
+		<p>For our prediction task, we tested our model with four different 
+		sets of features: tax features, neighborhood features computed 
+		by averaging tax features from each node’s neighborhood, graph features,
+		and a combination of all features. All models performed relatively 
+		similarly. Each had very high accuracy, able to predict nearly 90% of 
+		the time which blocks in the following year would have an eviction filing.
 		However, the poor precision scores indicate the proportion
 		of true positives of all predicted positives is low and poor recall score in turn
 		indicate the model is failing to identify most of the positives.
 		Eviction forecasting is a difficult task, depending of highly
-		local and individual phenomena that is difficult for a sim-
-		ple model with such limited data to predict. However, it
-		appears that the marginal increase in f1 between the all fea-
-		tures model and the tax data only model indicates moderate
-		evidence for both of our hypotheses. <br><br>
+		local and individual phenomena that is difficult for a simple model 
+		with such limited data to predict. However, it appears that the marginal 
+		increase in f1 between the all features model and the tax data only model 
+		indicates moderate evidence for both of our hypotheses. <br><br>
 			
 			
-		To better understand how the features we computed con-
-		tribute to our model’s predictive capacity, we can look into
+		To better understand how the features we computed contribute 
+		to our model’s predictive capacity, we can look into
 		the weight given to each feature by our model. With the 
 		XGBoost classification model, we are defining weight as the 
 		number of times features are used to split the data across trees.
 		In our all features model, we can immediately see the cause
 		of our high accuracy compared to the low f1. The primary
-		feature is the number of units on a block. Our model under-
-		stands most evictions will happen where most residential
-		units are. Next is the eviction filing count of neighboring
+		feature is the number of units on a block. Our model understands 
+		most evictions will happen where most residential units are. 
+		Next is the eviction filing count of neighboring
 		blocks, followed by eigenvector centrality. Generally, our
 		all features model gives greater weight to the neighborhood
-		features than the block level features. This may be an indi-
-		cation that the model can infer trends from patterns in the
+		features than the block level features. This may be an indication 
+		that the model can infer trends from patterns in the
 		surrounding neighborhood. <br><br>
 			
 			
@@ -157,8 +154,7 @@
 		number of bedrooms.
 		In contrast, our neighborhood features model gives the
 		greatest weight to the eviction count of neighbors, followed
-		by features indicating commercial properties in the neigh-
-		borhood.
+		by features indicating commercial properties in the neighborhood.
 		Lastly, our graph features model gives greatest weight
 		eigenvector centrality, longitude, and latitude</p>
 	</section>
