@@ -94,38 +94,37 @@
 	
 	<section class="summary">
 		<h2>Project Summary</h2>
-		<p>We employ tax assessor data to forecast evictions in San
-		Francisco. Using the proximate measure of eviction notices
+		<p>For this project we utilized tax assessor data to forecast evictions in San
+		Francisco. Using the measure of eviction notices
 		filed with the San Francisco Rent Board, we train a machine
 		learning model to predict the likelihood of a filing on a given
 		block in the city. The dataset analyzed includes a wide range
 		of containing property characteristics, ownership informa-
 		tion, and tax payment history of land parcels aggregated
-		at the block level We investigate the usefulness of spatial
-		features for this task. We compute averages of our tax data
+		at the block level. We investigated the usefulness of spatial
+		features for this task and computed averages of our tax data
 		across neighborhoods as well as metrics representing each
 		blocks position in a spatial network. Identifying these factors
 		can help us gain a better understanding of the relationship
 		between property characteristics and eviction likelihood for
-		further research or more effective policy. This in turn can
+		further research and more effective policy. This in turn can
 		lead to more stable and affordable housing options for resi-
-		dents of San Francisco.</p>
+		dents of San Francisco as well as potentially other cities.</p>
 	</section>
 	
 	<section class="results">
 		<h2>Project Results</h2>
 		<p>For our prediction task, we tested our model with four differ-
-		ent sets of features: tax features found in Table 1, neighbor-
-		hood features computed by averaging values in Table 1 from
-		each node’s neighborhood, graph features found in Table 2,
-		and all features. 
+		ent sets of features: tax features, neighbor-
+		hood features computed by averaging tax features from
+		each node’s neighborhood, graph features,
+		and a combination of all features. 
 		All models performed relatively similarly. Each had very
 		high accuracy, able to predict nearly 90% of the time which
 		blocks in the following year would have an eviction filing.
 		However, the poor precision scores indicate the proportion
-		of true positives of all predicted positives is low. Indeed, the
-		poor recall scores indicate the model is failing to identify
-		most of the positives.
+		of true positives of all predicted positives is low and poor recall score in turn
+		indicate the model is failing to identify most of the positives.
 		Eviction forecasting is a difficult task, depending of highly
 		local and individual phenomena that is difficult for a sim-
 		ple model with such limited data to predict. However, it
@@ -134,10 +133,9 @@
 		evidence for both of our hypotheses.
 		To better understand how the features we computed con-
 		tribute to our model’s predictive capacity, we can look into
-		the weight given to each feature by our model. Given the
-		architecture of the XGBoost classification model, we are
-		defining weight as the number of times features are used to
-		split the data across trees.
+		the weight given to each feature by our model. With the 
+		XGBoost classification model, we are defining weight as the 
+		number of times features are used to split the data across trees.
 		In our all features model, we can immediately see the cause
 		of our high accuracy compared to the low f1. The primary
 		feature is the number of units on a block. Our model under-
