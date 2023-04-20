@@ -77,32 +77,87 @@
 </head>
 <body>
 	<header>
-		<h1>Project Title</h1>
+		<h1>San Francisco Eviction Forecasting</h1>
 	</header>
 	
 	<section class="team">
 		<div class="team-member">
-			<img src="member1.jpg" alt="Member 1">
+			<img src="member1.jpg" alt="Gaurav Sett ">
 			<h2>Member 1</h2>
 		</div>
 		<div class="team-member">
-			<img src="member2.jpg" alt="Member 2">
+			<img src="member2.jpg" alt="Daniel Basman">
 			<h2>Member 2</h2>
-		</div>
-		<div class="team-member">
-			<img src="member3.jpg" alt="Member 3">
-			<h2>Member 3</h2>
 		</div>
 	</section>
 	
 	<section class="summary">
 		<h2>Project Summary</h2>
-		<p>Here is a short summary of our project.</p>
+		<p>We employ tax assessor data to forecast evictions in San
+		Francisco. Using the proximate measure of eviction notices
+		filed with the San Francisco Rent Board, we train a machine
+		learning model to predict the likelihood of a filing on a given
+		block in the city. The dataset analyzed includes a wide range
+		of containing property characteristics, ownership informa-
+		tion, and tax payment history of land parcels aggregated
+		at the block level We investigate the usefulness of spatial
+		features for this task. We compute averages of our tax data
+		across neighborhoods as well as metrics representing each
+		blocks position in a spatial network. Identifying these factors
+		can help us gain a better understanding of the relationship
+		between property characteristics and eviction likelihood for
+		further research or more effective policy. This in turn can
+		lead to more stable and affordable housing options for resi-
+		dents of San Francisco.</p>
 	</section>
 	
 	<section class="results">
 		<h2>Project Results</h2>
-		<p>Here is a brief overview of our project's results.</p>
+		<p>For our prediction task, we tested our model with four differ-
+		ent sets of features: tax features found in Table 1, neighbor-
+		hood features computed by averaging values in Table 1 from
+		each node’s neighborhood, graph features found in Table 2,
+		and all features. 
+		All models performed relatively similarly. Each had very
+		high accuracy, able to predict nearly 90% of the time which
+		blocks in the following year would have an eviction filing.
+		However, the poor precision scores indicate the proportion
+		of true positives of all predicted positives is low. Indeed, the
+		poor recall scores indicate the model is failing to identify
+		most of the positives.
+		Eviction forecasting is a difficult task, depending of highly
+		local and individual phenomena that is difficult for a sim-
+		ple model with such limited data to predict. However, it
+		appears that the marginal increase in f1 between the all fea-
+		tures model and the tax data only model indicates moderate
+		evidence for both of our hypotheses.
+		To better understand how the features we computed con-
+		tribute to our model’s predictive capacity, we can look into
+		the weight given to each feature by our model. Given the
+		architecture of the XGBoost classification model, we are
+		defining weight as the number of times features are used to
+		split the data across trees.
+		In our all features model, we can immediately see the cause
+		of our high accuracy compared to the low f1. The primary
+		feature is the number of units on a block. Our model under-
+		stands most evictions will happen where most residential
+		units are. Next is the eviction filing count of neighboring
+		blocks, followed by eigenvector centrality. Generally, our
+		all features model gives greater weight to the neighborhood
+		features than the block level features. This may be an indi-
+		cation that the model can infer trends from patterns in the
+		surrounding neighborhood.
+		Our tax features model gives the greatest weight to the
+		number of units as well, in addition to the land value and
+		improvement value. This is followed by information about
+		the structure such as number of rooms, property area, and
+		number of bedrooms.
+		In contrast, our neighborhood features model gives the
+		greatest weight to the eviction count of neighbors, followed
+		by features indicating commercial properties in the neigh-
+		borhood.
+		Lastly, our graph features model gives greatest weight
+		eigenvector centrality, longitude, and latitude</p>
 	</section>
 	
 	<section class="links">
